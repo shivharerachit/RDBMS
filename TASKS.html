@@ -1,0 +1,21 @@
+<!-- Sneha -->
+1. Users Table: Store details of all users (students, teachers, admins).
+2. Columns: user_id (PK), name, email, role, password_hash, created_at.
+3. Students Table: Store details specific to students.
+4. Columns: student_id (PK, FK), class_id (FK), date_of_birth, guardian_name, address.
+
+<!-- Vidhi -->
+5. Teachers Table: Store details specific to teachers.
+6. Columns: teacher_id (PK, FK), subject_id (FK), joining_date, salary.
+7. Classes Table: Manage class-specific details.
+8. Columns: class_id (PK), class_name, teacher_id (FK), schedule.
+9. Subjects Table: Define subjects offered.
+10. Columns: subject_id (PK), name, class_id (FK).
+
+<!-- Rachit -->
+11. Attendance Table: Maintain attendance records.
+12. Columns: attendance_id (PK), student_id (FK), date, status.
+13. Exams Table: Track exams conducted.
+14. Columns: exam_id (PK), class_id (FK), subject_id (FK), date, type.
+15. Results Table: Store student exam results.
+16. Columns: result_id (PK), exam_id (FK), student_id (FK), marks_obtained.
