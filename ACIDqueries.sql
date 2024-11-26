@@ -68,7 +68,6 @@ JOIN
 -- 	•	2NF: All non-key columns depend on the primary key.
 -- 	•	3NF: No transitive dependency.
 
-
 -- Indexing -- smajh aya but aur smjhna h
 
 -- Index on email for quick lookup

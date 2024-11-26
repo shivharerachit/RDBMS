@@ -19,3 +19,56 @@
 14. Columns: exam_id (PK), class_id (FK), subject_id (FK), date, type.
 15. Results Table: Store student exam results.
 16. Columns: result_id (PK), exam_id (FK), student_id (FK), marks_obtained.
+
+
+
+<!-- Key Points -->
+1. Use Transactions everywhere
+2. Check Constraints
+3. Implement Isolation
+4. Add Backup
+5. Triggers
+6. Stored Procedures
+7. Views
+
+
+<!-- Functions -->
+<!-- Admin is common in all -->
+1.  Add Teacher -> Admin (Add users, Add Teachers, Add Classes)
+2.  Add Student -> Admin (Add User, Assign class)
+3.  Mark Class Teacher Role -> Principle. (We have to create this role.)
+4.  Create Result -> Teacher (We have to update it with the marks of all the subjects, total marks and maximum total marks)
+5.  Mark Attendance -> Teacher 
+6.  Assign Task -> Teacher (We have to create this)
+
+Create/Update/Delete/Read - CRUD
+
+7.  Submit Leave Application -> Student
+8.  View Attendance -> Teacher/Student/Parent/Principle
+9.  View Result -> Teacher/Student/Parent/Principle
+10. View Assigned Task -> Teacher/Student/Parent
+11. View Completed Task -> Teacher/Student/Parent
+12. Create Exam Time Table -> Admin/Principle
+13. Create Routine Time Table -> Admin/Principle
+14. Fees Update -> Admin/Principle
+15. View Pending Fees -> Parent/Admin/Principle
+16. Create Meeting (PTM) -> Teacher
+17. View Meeting (PTM) -> Parent/Student/Principle
+18. Create Fine -> Principle
+19. Pay Fees/Fine -> Parent
+20. Schedule Extra Curricular Activites -> Teacher/Principle
+21. Update Notice Board -> Teacher/Principle
+22. View Notice Board -> Student/Parent
+23. 
+
+
+
+<!-- Roles -->
+1. Teacher
+2. Class Teacher
+3. Student
+4. Admin -> Fees, Manage, Update, Delete, 
+5. Principle
+6. Parent
+7. Library
+8. Staff
