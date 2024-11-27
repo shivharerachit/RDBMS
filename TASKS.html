@@ -35,7 +35,10 @@
 <!-- Functions -->
 <!-- Admin is common in all -->
 1.  Add Teacher -> Admin (Add users, Add Teachers, Add Classes)
-Create ```INSERT INTO Teachers (FirstName, LastName, Subject, Email, PhoneNumber)
+Create ```INSERT INTO users(name,email,role, password_hash) 
+VALUES ('Vishal',vishal.sh@gmail.com,teacher,HASU('123'));
+
+INSERT INTO Teachers (FirstName, LastName, Subject, Email, PhoneNumber)
 VALUES (x, x, x, x, x);```
 
 Read ```SELECT * FROM Teachers;```
@@ -49,18 +52,30 @@ WHERE TeacherID = x;```
 
 2.  Add Student -> Admin (Add User, Assign class)
 
-Create ```=>INSERT INTO users(name,email,role, password_hash) 
+Create ```INSERT INTO users(name,email,role, password_hash) 
 VALUES ('Vishal',vishal.sh@gmail.com,student,HASU('123'));
 
-=>INSERT INTO Students (student_id, class_id, date_of_birth, guardian_name, address)
+INSERT INTO Students (student_id, class_id, date_of_birth, guardian_name, address)
 VALUES (2, 101, '2010-05-15', 'Hemant', '120-A Subhas Nagar');```
+
+Read```SELECT * FROM Students;```
+
+Update ```UPDATE Students
+SET address = '125-B Gandhi Nagar', guardian_name = 'Rajesh'
+WHERE student_id = 2 AND class_id = 101;```
+
+Delete ```DELETE FROM users
+WHERE name = 'Vishal' AND email = 'vishal.sh@gmail.com';```
 
 
 <!-- --------------------------------------------------------------------------- -->
-3.  Mark Class Teacher Role -> Principle.
-4.  Create Result -> Teacher (We have to update it with the marks of all the subjects)
+3.  Add Class
+4.  Add Subjects
 5.  Mark Attendance -> Teacher 
-6.  Assign Task -> Teacher 
+6.  Mark Class Teacher Role -> Principle. (Mark Class Teacher)
+7.  Add Exams
+8.  Add Result -> Teacher (We have to update it with the marks of all the subjects) 
+9.  Assign Task -> Teacher 
 
 Create/Update/Delete/Read - CRUD
 

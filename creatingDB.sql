@@ -20,14 +20,14 @@ CREATE TABLE Students (
     date_of_birth DATE NOT NULL,
     guardian_name VARCHAR(100) NOT NULL,
     address VARCHAR(255) NOT NULL,
-    FOREIGN KEY (student_id) REFERENCES Users(user_id),
-    FOREIGN KEY (class_id) REFERENCES Classes(class_id) 
+    FOREIGN KEY (student_id) REFERENCES users(user_id),
+    FOREIGN KEY (class_id) REFERENCES Classes(class_id)
 );
 
 -- 5. Teachers Table: Store details specific to teachers.
 -- 6. Columns: teacher_id (PK, FK), subject_id (FK), joining_date, salary.
 Create table Teachers(
-    teachers_id INT PRIMARY KEY NOT NULL,
+    teachers_id INT PRIMARY KEY,
     subject_id INT ,
     joining_date DATE NOT NULL,
     salary Numeric(10,2) NOT NULL,
