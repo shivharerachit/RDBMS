@@ -35,11 +35,32 @@
 <!-- Functions -->
 <!-- Admin is common in all -->
 1.  Add Teacher -> Admin (Add users, Add Teachers, Add Classes)
+Create ```INSERT INTO Teachers (FirstName, LastName, Subject, Email, PhoneNumber)
+VALUES (x, x, x, x, x);```
+
+Read ```SELECT * FROM Teachers;```
+
+Update```UPDATE Teachers
+SET Email = 'x'
+WHERE TeacherID = x;```
+
+Delete```DELETE FROM Teachers
+WHERE TeacherID = x;```
+
 2.  Add Student -> Admin (Add User, Assign class)
-3.  Mark Class Teacher Role -> Principle. (We have to create this role.)
-4.  Create Result -> Teacher (We have to update it with the marks of all the subjects, total marks and maximum total marks)
+
+Create ```=>INSERT INTO users(name,email,role, password_hash) 
+VALUES ('Vishal',vishal.sh@gmail.com,student,HASU('123'));
+
+=>INSERT INTO Students (student_id, class_id, date_of_birth, guardian_name, address)
+VALUES (2, 101, '2010-05-15', 'Hemant', '120-A Subhas Nagar');```
+
+
+<!-- --------------------------------------------------------------------------- -->
+3.  Mark Class Teacher Role -> Principle.
+4.  Create Result -> Teacher (We have to update it with the marks of all the subjects)
 5.  Mark Attendance -> Teacher 
-6.  Assign Task -> Teacher (We have to create this)
+6.  Assign Task -> Teacher 
 
 Create/Update/Delete/Read - CRUD
 

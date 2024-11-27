@@ -7,8 +7,8 @@ create table users(
     user_id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(100) NOT NULL,
     email VARCHAR(100) UNIQUE NOT NULL,
-    role ENUM('student', 'teacher', 'admin') NOT NULL,
-    password_hash VARCHAR(255) NOT NULL,
+    role ENUM('student', 'teacher', 'admin', 'principal') NOT NULL, -- Updated
+    password_hash VARCHAR(255) NOT NULL, 
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP
 );
 
@@ -42,6 +42,7 @@ Create table Classes(
     class_name VARCHAR(10) NOT NULL,
     teacher_id INT,
     schedule VARCHAR(50),
+    is_class_teacher BOOLEAN DEFAULT FALSE, -- Updated
     FOREIGN KEY (teacher_id) REFERENCES Teachers(teacher_id)
 );
 
@@ -84,6 +85,22 @@ create TABLE Results (
     exam_id INT NOT NULL,  --issue
     student_id INT NOT NULL,  --issue
     marks_obtained INT NOT NULL, --issue
+    total_marks INT DEFAULT 0, -- Updated
+    max_total_marks INT DEFAULT 0, -- Updated
     FOREIGN KEY exam_id REFERENCES Exams(exam_id),
     FOREIGN KEY student_id REFERENCES Students(student_id)
 )
+
+
+-- Updated
+-- 17. Tasks Table: Store and assign task to students.
+-- 18. Columns: task_id (PK), teacher_id (FK), class_id (FK), task_description, due_date.
+CREATE TABLE Tasks (
+    task_id INT AUTO_INCREMENT PRIMARY KEY,
+    teacher_id INT NOT NULL,
+    class_id INT,
+    task_description JSON NOT NULL,
+    due_date DATE DEFAULT (CURDATE() + INTERVAL 7 DAY),
+    FOREIGN KEY (teacher_id) REFERENCES Teachers(teachers_id),
+    FOREIGN KEY (class_id) REFERENCES Classes(class_id)
+);
