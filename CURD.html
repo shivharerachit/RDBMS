@@ -1,0 +1,115 @@
+1. Fees Table: Tracking Pending and Paid Fees
+=>CREATE TABLE Fees (
+    fee_id INT AUTO_INCREMENT PRIMARY KEY,
+    student_id INT NOT NULL,
+    amount_due DECIMAL(10,2) NOT NULL,
+    due_date DATE NOT NULL,
+    status ENUM('pending', 'paid') DEFAULT 'pending',
+    FOREIGN KEY (student_id) REFERENCES Students(student_id)
+ );
+2. Fines Table: Managing Student Fines
+=>CREATE TABLE Fines (
+    fine_id INT AUTO_INCREMENT PRIMARY KEY,
+    student_id INT NOT NULL,
+    amount DECIMAL(10,2) NOT NULL,
+    reason VARCHAR(255) NOT NULL,
+    date_issued DATE DEFAULT CURRENT_DATE,
+    status ENUM('unpaid', 'paid') DEFAULT 'unpaid',
+    FOREIGN KEY (student_id) REFERENCES Students(student_id)
+);
+3. Payments Table: Logging Fee/Fine Payments
+=>CREATE TABLE Payments (
+    payment_id INT AUTO_INCREMENT PRIMARY KEY,
+    student_id INT NOT NULL,
+    fee_id INT,
+    fine_id INT,
+    amount_paid DECIMAL(10,2) NOT NULL,
+    payment_date DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (student_id) REFERENCES Students(student_id),
+    FOREIGN KEY (fee_id) REFERENCES Fees(fee_id),
+    FOREIGN KEY (fine_id) REFERENCES Fines(fine_id)
+);
+4. Meetings (PTM) Table: Scheduling and Viewing PTMs
+=>CREATE TABLE Meetings (
+    meeting_id INT AUTO_INCREMENT PRIMARY KEY,
+    teacher_id INT NOT NULL,
+    class_id INT,
+    date DATETIME NOT NULL,
+    agenda TEXT NOT NULL,
+    FOREIGN KEY (teacher_id) REFERENCES Teachers(teachers_id),
+    FOREIGN KEY (class_id) REFERENCES Classes(class_id)
+);
+
+To incorporate the functionalities you listed into the schoolDB database, I will provide table structures and associated relationships for the following:
+
+Fees Management: Tracking pending fees and fines.
+Meetings (PTM): Scheduling and viewing parent-teacher meetings.
+Fines Management: Creating and paying fines.
+Extra Curricular Activities: Scheduling activities.
+Notice Board: Posting and viewing notices.
+1. Fees Table: Tracking Pending and Paid Fees
+sql
+Copy code
+CREATE TABLE Fees (
+    fee_id INT AUTO_INCREMENT PRIMARY KEY,
+    student_id INT NOT NULL,
+    amount_due DECIMAL(10,2) NOT NULL,
+    due_date DATE NOT NULL,
+    status ENUM('pending', 'paid') DEFAULT 'pending',
+    FOREIGN KEY (student_id) REFERENCES Students(student_id)
+);
+2. Fines Table: Managing Student Fines
+sql
+Copy code
+CREATE TABLE Fines (
+    fine_id INT AUTO_INCREMENT PRIMARY KEY,
+    student_id INT NOT NULL,
+    amount DECIMAL(10,2) NOT NULL,
+    reason VARCHAR(255) NOT NULL,
+    date_issued DATE DEFAULT CURRENT_DATE,
+    status ENUM('unpaid', 'paid') DEFAULT 'unpaid',
+    FOREIGN KEY (student_id) REFERENCES Students(student_id)
+);
+3. Payments Table: Logging Fee/Fine Payments
+sql
+Copy code
+CREATE TABLE Payments (
+    payment_id INT AUTO_INCREMENT PRIMARY KEY,
+    student_id INT NOT NULL,
+    fee_id INT,
+    fine_id INT,
+    amount_paid DECIMAL(10,2) NOT NULL,
+    payment_date DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (student_id) REFERENCES Students(student_id),
+    FOREIGN KEY (fee_id) REFERENCES Fees(fee_id),
+    FOREIGN KEY (fine_id) REFERENCES Fines(fine_id)
+);
+4. Meetings (PTM) Table: Scheduling and Viewing PTMs
+sql
+Copy code
+CREATE TABLE Meetings (
+    meeting_id INT AUTO_INCREMENT PRIMARY KEY,
+    teacher_id INT NOT NULL,
+    class_id INT,
+    date DATETIME NOT NULL,
+    agenda TEXT NOT NULL,
+    FOREIGN KEY (teacher_id) REFERENCES Teachers(teachers_id),
+    FOREIGN KEY (class_id) REFERENCES Classes(class_id)
+);
+5. Extra Curricular Activities Table: Scheduling Activities
+=>CREATE TABLE ExtraCurricularActivities (
+    activity_id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    date DATETIME NOT NULL,
+    organizer_role ENUM('teacher', 'principal') NOT NULL,
+    description TEXT,
+    FOREIGN KEY (organizer_role) REFERENCES Users(role) -- Optional if you want to link to users
+);
+6. Notice Board Table: Posting and Viewing Notices
+=>CREATE TABLE Notices (
+    notice_id INT AUTO_INCREMENT PRIMARY KEY,
+    title VARCHAR(100) NOT NULL,
+    content TEXT NOT NULL,
+    posted_by_role ENUM('teacher', 'principal') NOT NULL,
+    posted_at DATETIME DEFAULT CURRENT_TIMESTAMP
+);
